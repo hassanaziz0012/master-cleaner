@@ -52,4 +52,4 @@ class CustomerFormView(View):
 
         send_email(request.POST)
 
-        return JsonResponse({'success': True})
+        return JsonResponse({'emailreport': emailreport})

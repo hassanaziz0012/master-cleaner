@@ -27,7 +27,8 @@ SECRET_KEY = 'django-insecure-6=58c5k=u=$vxcka&&vi-x&wvy7(!*2&ps%!tlgruj9@(7$vq4
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    "ec2-34-216-185-213.us-west-2.compute.amazonaws.com"
+    "ec2-34-216-185-213.us-west-2.compute.amazonaws.com",
+    "127.0.0.1",
 ]
 
 
@@ -80,7 +81,7 @@ EMAIL_HOST = 'cloudhost-2677775.us-midwest-1.nxcli.net'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'info@mastersealer.com'
 EMAIL_HOST_PASSWORD = 'LamestCadgeFloursForm'
-DEFAULT_FROM_EMAIL = 'info@mastersealer.com'
+DEFAULT_FROM_EMAIL = 'service@mastersealer.com'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
