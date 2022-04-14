@@ -294,7 +294,7 @@ def send_email(params: dict):
     SOURCE_HTML = SOURCE_HTML.replace("[QUOTATION_DATE]", params.get('quotation_date'))
     
     SOURCE_HTML = SOURCE_HTML.replace("[QTY1]", '')
-    SOURCE_HTML = SOURCE_HTML.replace("[DESC1]", params.get('desc1'))
+    SOURCE_HTML = SOURCE_HTML.replace("[DESC1]", "<br>" + params.get('desc1'))
     SOURCE_HTML = SOURCE_HTML.replace("[AREA1]", params.get('area1'))
     SOURCE_HTML = SOURCE_HTML.replace("[TOTAL1]", params.get('price1'))
 
