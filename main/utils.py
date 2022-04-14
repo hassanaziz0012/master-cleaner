@@ -289,7 +289,13 @@ def send_email(params: dict):
     # SOURCE_HTML.replace("[COMPANY]", params.get('postal_code'))
 
     SOURCE_HTML = SOURCE_HTML.replace("[ESTIMATOR]", params.get('estimator'))
-    SOURCE_HTML = SOURCE_HTML.replace("[QUOTATION]", params.get('quotation'))
+    if params.get('quotation') != '':
+        print('replacing quotation')
+        SOURCE_HTML = SOURCE_HTML.replace("[QUOTATION]", params.get('quotation'))
+    else:
+        print('not replacing quotation')
+        SOURCE_HTML = SOURCE_HTML.replace("[QUOTATION]", '.')
+
     SOURCE_HTML = SOURCE_HTML.replace("[PAYMENT_STRUCTURE]", params.get('payment_structure'))
     SOURCE_HTML = SOURCE_HTML.replace("[QUOTATION_DATE]", params.get('quotation_date'))
     
@@ -333,3 +339,5 @@ def send_email(params: dict):
     email.content_subtype = 'html'
     email.attach(filename="master-cleaner.pdf", content=buf.read())
     email.send()
+
+    return SOURCE_HTML
