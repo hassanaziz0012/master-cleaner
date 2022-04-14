@@ -15,11 +15,6 @@ SOURCE_HTML = """
 
     <!-- Bootstrap CSS -->
     <style>
-        .logo {
-            display: flex;
-            justify-content: space-between;
-        }
-
         .logo img {
             width: 480px;
             height: 110px;
@@ -28,20 +23,17 @@ SOURCE_HTML = """
         h2,
         h4 {
             font-weight: 400;
-        }
-
-        .header,
-        .contact-info {
-            margin-bottom: 5em;
+            line-height: 1px;
         }
 
         .customer-info .basic h4 {
             font-weight: bolder;
+            line-height: 1px;
         }
 
         .customer-info .basic .placeholders {
             margin-left: 2.5em;
-            line-height: 5px;
+            line-height: 1px;
         }
 
         .underline {
@@ -50,20 +42,22 @@ SOURCE_HTML = """
 
         .thank-you {
             background: #c7d5e8;
-            height: 100px;
-            margin-bottom: 1.5em;
+            height: 50px;
+            margin-bottom: 1em;
             text-align: center;
         }
         
         .thank-you h3 {
-            padding-top: 50px;
-            padding-bottom: 50px;
+            padding-top: 17.5px;
+        }
+        .credit p {
+            line-height: 1px;
         }
 
 
         .table {
             width: 100%;
-            margin: 2em 0 2em 0;
+            margin: 1em 0 0 0;
             border-collapse: separate;
         }
 
@@ -76,10 +70,10 @@ SOURCE_HTML = """
         }
 
         .table thead th {
-            font-size: 16px;
+            font-size: 12px;
             background-color: #c7d5e8;
             border: 1.5px solid darkgray;
-            padding: 1em;
+            padding: 0.5em;
         }
         
         .table td {
@@ -125,7 +119,6 @@ SOURCE_HTML = """
 <body class="container">
     <div class="logo">
         <img src="https://i.imgur.com/BT6GFNC.jpg" alt="Logo">
-        <h2>QUOTE</h2>
     </div>
     <div class="header">
         <h2>PROPERTY SERVICES</h2>
@@ -169,8 +162,6 @@ SOURCE_HTML = """
                 </tbody>
             </table>
         </div>
-
-        <hr>
 
         <div class="services">
             <table class="table">
@@ -290,10 +281,8 @@ def send_email(params: dict):
 
     SOURCE_HTML = SOURCE_HTML.replace("[ESTIMATOR]", params.get('estimator'))
     if params.get('quotation') != '':
-        print('replacing quotation')
         SOURCE_HTML = SOURCE_HTML.replace("[QUOTATION]", params.get('quotation'))
     else:
-        print('not replacing quotation')
         SOURCE_HTML = SOURCE_HTML.replace("[QUOTATION]", '.')
 
     SOURCE_HTML = SOURCE_HTML.replace("[PAYMENT_STRUCTURE]", params.get('payment_structure'))
