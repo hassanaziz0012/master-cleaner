@@ -1,0 +1,6 @@
+db.sqlite3
+main/__pycache__/
+master_cleaner/__pycache__/
+main/migrations/__pycache__/
+testing.pdf
+static/master_sealer_logo.jpg
