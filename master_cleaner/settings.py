@@ -81,7 +81,7 @@ EMAIL_HOST = 'cloudhost-2677775.us-midwest-1.nxcli.net'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'info@mastersealer.com'
 EMAIL_HOST_PASSWORD = 'LamestCadgeFloursForm'
-DEFAULT_FROM_EMAIL = 'service@mastersealer.com'
+DEFAULT_FROM_EMAIL = 'Master Sealer <service@mastersealer.com>'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
