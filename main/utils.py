@@ -326,7 +326,7 @@ def send_email(params: dict):
     email_subject = f"Hi {params.get('name')}, Your Estimate is Ready!"
     email = EmailMessage(subject=email_subject, body=email_body, to=recipients)
     email.content_subtype = 'html'
-    email.attach(filename="master-cleaner.pdf", content=buf.read())
+    email.attach(filename=f"{params.get('name')}_{params.get('address')}.pdf", content=buf.read())
     email.send()
 
     return SOURCE_HTML
