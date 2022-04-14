@@ -1,4 +1,4 @@
-from django.http import JsonResponse
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 from django.views import View
 from django.utils.decorators import method_decorator
@@ -50,6 +50,7 @@ class CustomerFormView(View):
 
         emailreport = request.POST.get('emailreport') # Send PDF to customer if this is 1, otherwise don't send if this is 0.
 
-        send_email(request.POST)
+        source_html = send_email(request.POST)
 
-        return JsonResponse({'emailreport': emailreport})
+        return HttpResponse(source_html)
+        
