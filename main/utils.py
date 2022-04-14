@@ -23,17 +23,17 @@ SOURCE_HTML = """
         h2,
         h4 {
             font-weight: 400;
-            line-height: 1px;
+            line-height: 0.1px;
         }
 
         .customer-info .basic h4 {
             font-weight: bolder;
-            line-height: 1px;
+            line-height: 0.1px;
         }
 
         .customer-info .basic .placeholders {
             margin-left: 2.5em;
-            line-height: 1px;
+            line-height: 0.1px;
         }
 
         .underline {
@@ -112,6 +112,9 @@ SOURCE_HTML = """
         .service-row * {
             padding-top: 1em;
         }
+        .area-header, .total-header {
+            width: 100px;
+        }
 
     </style>
 </head>
@@ -121,10 +124,11 @@ SOURCE_HTML = """
         <img src="https://i.imgur.com/BT6GFNC.jpg" alt="Logo">
     </div>
     <div class="header">
-        <h2>PROPERTY SERVICES</h2>
+        <h2>PROPERTY SERVICES!</h2>
         <h2>CELEBRATING 25 YEARS!</h2>
     </div>
 
+    <br><br>
     <div class="contact-info">
         <h4>TOLL-FREE: 1-855-SEALED-0</h4>
         <h4>905 Region: 905-850-8955</h4>
@@ -132,7 +136,8 @@ SOURCE_HTML = """
         <h4>service@mastersealer.com</h4>
         <h4>www.mastersealer.com</h4>
     </div>
-
+    <br><br>
+    
     <div class="customer-info">
         <div class="basic">
             <h4>TO:</h4>
@@ -168,8 +173,8 @@ SOURCE_HTML = """
                 <thead>
                     <th>QTY</th>
                     <th>DESCRIPTION OF SERVICES</th>
-                    <th>AREA</th>
-                    <th>TOTAL</th>
+                    <th class="area-header">AREA</th>
+                    <th class="total-header">TOTAL</th>
                 </thead>
                 <tbody>
                     <tr class="service-row">
