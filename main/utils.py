@@ -16,8 +16,8 @@ SOURCE_HTML = """
     <!-- Bootstrap CSS -->
     <style>
         .logo img {
-            width: 480px;
-            height: 110px;
+            width: 240px;
+            height: 55px;
         }
 
         h2,
@@ -36,8 +36,17 @@ SOURCE_HTML = """
             line-height: 0.1px;
         }
 
+        .contact-info * {
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+
         .underline {
             text-decoration: underline !important;
+        }
+
+        .quotation .table tr > td {
+            padding-top: 10px;
         }
 
         .thank-you {
@@ -54,7 +63,6 @@ SOURCE_HTML = """
             line-height: 1px;
         }
 
-
         .table {
             width: 100%;
             margin: 1em 0 0 0;
@@ -63,10 +71,6 @@ SOURCE_HTML = """
 
         .quotation .table {
             border-bottom: 1px solid lightgray;
-        }
-
-        .quotation .table tr > td {
-            padding: 1em;
         }
 
         .table thead th {
@@ -82,6 +86,9 @@ SOURCE_HTML = """
 
         .table tr td {
             border-left: 1px solid lightgray;
+        }
+        .table tr td.no-border {
+            border-left: none;
         }
 
         .totals-table {
@@ -124,19 +131,19 @@ SOURCE_HTML = """
         <img src="https://i.imgur.com/BT6GFNC.jpg" alt="Logo">
     </div>
     <div class="header">
-        <h2>PROPERTY SERVICES!</h2>
-        <h2>CELEBRATING 25 YEARS!</h2>
+        <h2 style="font-size: 16px; line-height: 0.1px; margin: 0; padding: 10px 0;">PROPERTY SERVICES!</h2>
+        <h2 style="font-size: 16px; line-height: 0.1px; margin: 0; padding: 10px 0;">CELEBRATING 25 YEARS!</h2>
     </div>
 
-    <br><br>
-    <div class="contact-info">
+    <br>
+    <div class="contact-info" style="font-size: 12px;">
         <h4>TOLL-FREE: 1-855-SEALED-0</h4>
         <h4>905 Region: 905-850-8955</h4>
         <h4>416 Region: 416-450-1157</h4>
         <h4>service@mastersealer.com</h4>
         <h4>www.mastersealer.com</h4>
     </div>
-    <br><br>
+    <br>
     
     <div class="customer-info">
         <div class="basic">
@@ -162,7 +169,7 @@ SOURCE_HTML = """
                         <td>[ESTIMATOR]</td>
                         <td>[QUOTATION]</td>
                         <td>[PAYMENT_STRUCTURE]</td>
-                        <td>[QUOTATION_DATE]</td>
+                        <td style="border-right: 1px solid lightgray;">[QUOTATION_DATE]</td>
                     </tr>
                 </tbody>
             </table>
@@ -181,49 +188,49 @@ SOURCE_HTML = """
                         <td class="quantity-cell first-row">[QTY1]</td>
                         <td class="first-row">[DESC1]</td>
                         <td class="first-row">[AREA1]</td>
-                        <td class="first-row">[TOTAL1]</td>
+                        <td class="first-row" style="border-right: 1px solid lightgray;">[TOTAL1]</td>
                     </tr>
 
                     <tr class="service-row">
                         <td class="quantity-cell">[QTY2]</td>
                         <td>[DESC2]</td>
                         <td>[AREA2]</td>
-                        <td>[TOTAL2]</td>
+                        <td style="border-right: 1px solid lightgray;">[TOTAL2]</td>
                     </tr>
 
                     <tr class="service-row">
                         <td class="quantity-cell">[QTY3]</td>
                         <td>[DESC3]</td>
                         <td>[AREA3]</td>
-                        <td>[TOTAL3]</td>
+                        <td style="border-right: 1px solid lightgray;">[TOTAL3]</td>
                     </tr>
 
                     <tr class="border-bottom-row service-row">
                         <td class="quantity-cell">[QTY4]</td>
                         <td>[DESC4]</td>
                         <td>[AREA4]</td>
-                        <td>[TOTAL4]</td>
+                        <td style="border-right: 1px solid lightgray;">[TOTAL4]</td>
                     </tr>
 
                     <!-- TOTALS -->
                     <tr class="padding-top-row">
-                        <td></td>
-                        <td></td>
-                        <td class="bg-success text-white"><b>Subtotal</b></td>
+                        <td class="no-border"></td>
+                        <td class="no-border"></td>
+                        <td class="bg-success text-white no-border"><b>Subtotal</b></td>
                         <td class="bg-success text-white border-row">[SUBTOTAL]</td>
                     </tr>
 
                     <tr class="padding-top-row">
-                        <td></td>
-                        <td></td>
-                        <td class="bg-success text-white"><b>HST</b></td>
+                        <td class="no-border"></td>
+                        <td class="no-border"></td>
+                        <td class="bg-success text-white no-border"><b>HST</b></td>
                         <td class="bg-success text-white border-row">[HST]</td>
                     </tr>
 
                     <tr class="padding-top-row">
-                        <td></td>
-                        <td></td>
-                        <td class="bg-success text-white"><b>Total</b></td>
+                        <td class="no-border"></td>
+                        <td class="no-border"></td>
+                        <td class="bg-success text-white no-border"><b>Total</b></td>
                         <td class="bg-success text-white border-row">[TOTAL]</td>
                     </tr>
 
@@ -318,7 +325,7 @@ def send_email(params: dict):
     SOURCE_HTML = SOURCE_HTML.replace("[TOTAL]", params.get('total'))
     
     send_to_customer = params.get('emailreport')
-    recipients = ['service@mastersealer.com']
+    recipients = []
 
     if send_to_customer == "1":
         recipients.append(params.get('email'))
@@ -329,7 +336,7 @@ def send_email(params: dict):
 
     email_body = EMAIL_BODY.replace('[CUSTOMER_NAME]', params.get('name'))
     email_subject = f"Hi {params.get('name')}, Your Estimate is Ready!"
-    email = EmailMessage(subject=email_subject, body=email_body, to=recipients)
+    email = EmailMessage(subject=email_subject, body=email_body, to=recipients, cc=['service@mastersealer.com'])
     email.content_subtype = 'html'
     email.attach(filename=f"{params.get('name')}_{params.get('address')}.pdf", content=buf.read())
     email.send()

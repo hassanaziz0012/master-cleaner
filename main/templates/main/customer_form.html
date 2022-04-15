@@ -46,7 +46,7 @@
         function selectDefault() {
             var defaultChecked = $('input[name="defualt"]:checked', '#myForm').val();
             if (defaultChecked == 0) {
-                $('#desc1').val('1.High Pressure Wash Using Commercial Cleaning Equipment of entire surface to remove weeds and stains.');
+                $('#desc1').val('1. High Pressure Wash Using Commercial Cleaning Equipment of entire surface to remove weeds and stains.');
                 $('#desc2').val('2. Sweeping Application of Polymeric Sand between the seams and joints to improve the durability and Stability of the paving stones as well prevent weeds, moss, ant infestation, and Joint sand loss. (Interlock Only - Not for Concrete)');
                 $('#desc3').val('3. 2 Coat Even Application of Contractor Grade Sealant NON SLIP to help protect the surface from stains, dirt, daily wear, and weather elements. Your Choice of Finish');
             }
@@ -63,15 +63,20 @@
 
     <script>
         // PASSWORD PROTECTION
-        const username = prompt("Username: ");
-        const password = prompt("Password: ");
-
-        if (username !== "mastersealer") {
-            close();
-        }
-
-        if (password !== "Estimates1983123") {
-            close();
+        if (sessionStorage.getItem("username") !== "mastersealer" || sessionStorage.getItem("password") !== "Estimates1983123") {
+            const username = prompt("Username: ");
+            const password = prompt("Password: ");
+    
+            if (username !== "mastersealer") {
+                close();
+            }
+    
+            if (password !== "Estimates1983123") {
+                close();
+            }
+    
+            sessionStorage.setItem("username", username);
+            sessionStorage.setItem("password", password);
         }
     </script>
 </head>
