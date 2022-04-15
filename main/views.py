@@ -11,6 +11,7 @@ from main.utils import send_email
 @method_decorator(csrf_exempt, name="dispatch")
 class CustomerFormView(View):
     def get(self, request, format=None):
+        del request.session
         return render(request, "main/customer_form.html")
 
     def post(self, request, format=None):
@@ -78,7 +79,6 @@ class CustomerFormView(View):
             'price4': price4,
             'emailreport': emailreport,
         }
-        print(desc4)
         source_html = send_email(params)
 
         return HttpResponse(source_html)
