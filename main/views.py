@@ -26,7 +26,6 @@ class CustomerFormView(View):
         payment_structure = request.POST.get('payment_structure')
         quotation_date = request.POST.get('quotation_date')
 
-
         desc1 = request.POST.get('desc1')
         area1 = request.POST.get('area1')
         price1 = request.POST.get('price1')
@@ -50,7 +49,37 @@ class CustomerFormView(View):
 
         emailreport = request.POST.get('emailreport') # Send PDF to customer if this is 1, otherwise don't send if this is 0.
 
-        source_html = send_email(request.POST)
+        params = {
+            'company': company,
+            'name': name,
+            'email': email,
+            'address': address,
+            'city': city,
+            'postal_code': postal_code,
+            'estimator': estimator,
+            'quotation': quotation,
+            'payment_structure': payment_structure,
+            'quotation_date': quotation_date,
+            'desc1': desc1,
+            'area1': area1,
+            'price1': price1,
+            'desc2': desc2,
+            'area2': area2,
+            'price2': price2,
+            'desc3': desc3,
+            'area3': area3,
+            'price3': price3,
+            'desc4': desc4,
+            'area4': area4,
+            'price4': price4,
+            'subtotal': subtotal,
+            'hst': hst,
+            'total': total,
+            'price4': price4,
+            'emailreport': emailreport,
+        }
+        print(desc4)
+        source_html = send_email(params)
 
         return HttpResponse(source_html)
         
