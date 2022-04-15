@@ -60,6 +60,20 @@
             $('#date').val((date.getMonth() + 1) + '/' + date.getDate() + '/' + date.getFullYear());
         });
     </SCRIPT>
+
+    <script>
+        // PASSWORD PROTECTION
+        const username = prompt("Username: ");
+        const password = prompt("Password: ");
+
+        if (username !== "mastersealer") {
+            close();
+        }
+
+        if (password !== "Estimates1983123") {
+            close();
+        }
+    </script>
 </head>
 
 <body>
