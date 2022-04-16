@@ -141,7 +141,7 @@ def send_email(params: dict):
 
 <body class="container">
     <div class="logo flexrow">
-        <img src="https://i.imgur.com/kkmnDed.png" alt="Logo">
+        <img src="https://i.imgur.com/SL7vZt2.png" alt="Logo">
         <!-- <p style="font-size: 14px;">QUOTE</p> -->
     </div>
     <br>
