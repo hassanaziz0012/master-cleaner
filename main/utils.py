@@ -301,9 +301,9 @@ def send_email(params: dict):
         if price == '0.0' or price == '0' or price == '0.00':
             return ''
         elif '.' in price:
-            return '$<span style="opacity: 0;">0000</span>' + price
+            return '$    ' + price
         else:
-            return '$<span style="opacity: 0;">0000</span>' + price + '.00'
+            return '$    ' + price + '.00'
 
 
     SOURCE_HTML = SOURCE_HTML.replace("[COMPANY_NAME]", params.get('company'))
