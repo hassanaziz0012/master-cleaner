@@ -16,9 +16,6 @@ def send_email(params: dict):
 
     <!-- Bootstrap CSS -->
     <style>
-        body {
-            font-family: "Roboto";
-        }
         h2,
         h4 {
             font-weight: 400;
@@ -144,14 +141,10 @@ def send_email(params: dict):
 
 <body class="container">
     <div class="logo flexrow">
-        <img src="https://i.imgur.com/bRkpxDk.png" alt="Logo">
+        <img src="https://i.imgur.com/kkmnDed.png" alt="Logo">
         <!-- <p style="font-size: 14px;">QUOTE</p> -->
     </div>
     <br>
-    <div class="header">
-        <p style="font-size: 14px; margin: 0; padding: 0 0;">PROPERTY SERVICES!</p>
-        <p style="font-size: 14px; margin: 0; padding: 0 0;">CELEBRATING 25 YEARS!</p>
-    </div>
 
     <br>
     <div class="contact-info" style="font-size: 12px;">
@@ -197,16 +190,16 @@ def send_email(params: dict):
             <table class="table">
                 <thead>
                     <th>QTY</th>
-                    <th>DESCRIPTION OF SERVICES</th>
+                    <th style="width: 800px">DESCRIPTION OF SERVICES</th>
                     <th class="area-header">AREA</th>
                     <th class="total-header">TOTAL</th>
                 </thead>
                 <tbody>
                     <tr class="service-row">
-                        <td class="quantity-cell first-row">[QTY1]</td>
-                        <td class="first-row" style="text-align: left; padding-left: 1em;">[DESC1]</td>
-                        <td class="first-row">[AREA1]</td>
-                        <td class="first-row" style="border-right: 1px solid lightgray; font-weight: bold;">[TOTAL1]</td>
+                        <td class="quantity-cell first-row" style="width: 50px;">[QTY1]</td>
+                        <td class="first-row" style="width: 800px; text-align: left; padding-left: 1em;">[DESC1]</td>
+                        <td class="first-row" style="width: 100px;">[AREA1]</td>
+                        <td class="first-row" style="border-right: 1px solid lightgray; font-weight: bold; width: 100px;">[TOTAL1]</td>
                     </tr>
 
                     <tr class="service-row">
@@ -225,7 +218,7 @@ def send_email(params: dict):
 
                     <tr class="border-bottom-row service-row">
                         <td class="quantity-cell">[QTY4]</td>
-                        <td style="text-align: left; padding-left: 1em;">[DESC4]</td>
+                        <td style="">[DESC4]</td>
                         <td>[AREA4]</td>
                         <td style="border-right: 1px solid lightgray; font-weight: bold;">[TOTAL4]</td>
                     </tr>
@@ -234,22 +227,22 @@ def send_email(params: dict):
                     <tr class="padding-top-row">
                         <td class="no-border"></td>
                         <td class="no-border"></td>
-                        <td class="bg-success text-white no-border" style="text-align: right; padding-right: 5px;"><b>Subtotal</b></td>
-                        <td class="bg-success text-white border-row" style="font-weight: bold;">[SUBTOTAL]</td>
+                        <td class="no-border" style="text-align: right; padding-right: 5px;"><b>SUBTOTAL</b></td>
+                        <td class="border-row" style="font-weight: bold;">[SUBTOTAL]</td>
                     </tr>
 
                     <tr class="padding-top-row">
                         <td class="no-border"></td>
                         <td class="no-border"></td>
-                        <td class="bg-success text-white no-border" style="text-align: right; padding-right: 5px;"><b>HST</b></td>
-                        <td class="bg-success text-white border-row" style="font-weight: bold;">[HST]</td>
+                        <td class="no-border" style="text-align: right; padding-right: 5px;"><b>HST</b></td>
+                        <td class="border-row" style="font-weight: bold;">[HST]</td>
                     </tr>
 
                     <tr class="padding-top-row">
                         <td class="no-border"></td>
                         <td class="no-border"></td>
-                        <td class="bg-success text-white no-border" style="text-align: right; padding-right: 5px;"><b>Total</b></td>
-                        <td class="bg-success text-white border-row" style="font-weight: bold;">[TOTAL]</td>
+                        <td class="no-border" style="text-align: right; padding-right: 5px;"><b>TOTAL</b></td>
+                        <td class="border-row" style="font-weight: bold;">[TOTAL]</td>
                     </tr>
 
                 </tbody>
