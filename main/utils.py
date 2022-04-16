@@ -16,6 +16,9 @@ def send_email(params: dict):
 
     <!-- Bootstrap CSS -->
     <style>
+        body {
+            font-family: "Roboto";
+        }
         h2,
         h4 {
             font-weight: 400;
@@ -203,50 +206,50 @@ def send_email(params: dict):
                         <td class="quantity-cell first-row">[QTY1]</td>
                         <td class="first-row" style="text-align: left; padding-left: 1em;">[DESC1]</td>
                         <td class="first-row">[AREA1]</td>
-                        <td class="first-row" style="border-right: 1px solid lightgray;">[TOTAL1]</td>
+                        <td class="first-row" style="border-right: 1px solid lightgray; font-weight: bold;">[TOTAL1]</td>
                     </tr>
 
                     <tr class="service-row">
                         <td class="quantity-cell">[QTY2]</td>
                         <td style="text-align: left; padding-left: 1em;">[DESC2]</td>
                         <td>[AREA2]</td>
-                        <td style="border-right: 1px solid lightgray;">[TOTAL2]</td>
+                        <td style="border-right: 1px solid lightgray; font-weight: bold;">[TOTAL2]</td>
                     </tr>
 
                     <tr class="service-row">
                         <td class="quantity-cell">[QTY3]</td>
                         <td style="text-align: left; padding-left: 1em;">[DESC3]</td>
                         <td>[AREA3]</td>
-                        <td style="border-right: 1px solid lightgray;">[TOTAL3]</td>
+                        <td style="border-right: 1px solid lightgray; font-weight: bold;">[TOTAL3]</td>
                     </tr>
 
                     <tr class="border-bottom-row service-row">
                         <td class="quantity-cell">[QTY4]</td>
                         <td style="text-align: left; padding-left: 1em;">[DESC4]</td>
                         <td>[AREA4]</td>
-                        <td style="border-right: 1px solid lightgray;">[TOTAL4]</td>
+                        <td style="border-right: 1px solid lightgray; font-weight: bold;">[TOTAL4]</td>
                     </tr>
 
                     <!-- TOTALS -->
                     <tr class="padding-top-row">
                         <td class="no-border"></td>
                         <td class="no-border"></td>
-                        <td class="bg-success text-white no-border"><b>Subtotal</b></td>
-                        <td class="bg-success text-white border-row">[SUBTOTAL]</td>
+                        <td class="bg-success text-white no-border" style="text-align: right; padding-right: 5px;"><b>Subtotal</b></td>
+                        <td class="bg-success text-white border-row" style="font-weight: bold;">[SUBTOTAL]</td>
                     </tr>
 
                     <tr class="padding-top-row">
                         <td class="no-border"></td>
                         <td class="no-border"></td>
-                        <td class="bg-success text-white no-border"><b>HST</b></td>
-                        <td class="bg-success text-white border-row">[HST]</td>
+                        <td class="bg-success text-white no-border" style="text-align: right; padding-right: 5px;"><b>HST</b></td>
+                        <td class="bg-success text-white border-row" style="font-weight: bold;">[HST]</td>
                     </tr>
 
                     <tr class="padding-top-row">
                         <td class="no-border"></td>
                         <td class="no-border"></td>
-                        <td class="bg-success text-white no-border"><b>Total</b></td>
-                        <td class="bg-success text-white border-row">[TOTAL]</td>
+                        <td class="bg-success text-white no-border" style="text-align: right; padding-right: 5px;"><b>Total</b></td>
+                        <td class="bg-success text-white border-row" style="font-weight: bold;">[TOTAL]</td>
                     </tr>
 
                 </tbody>
@@ -298,9 +301,9 @@ def send_email(params: dict):
         if price == '0.0' or price == '0' or price == '0.00':
             return ''
         elif '.' in price:
-            return price
+            return '$<span style="opacity: 0;">0000</span>' + price
         else:
-            return price + '.00'
+            return '$<span style="opacity: 0;">0000</span>' + price + '.00'
 
 
     SOURCE_HTML = SOURCE_HTML.replace("[COMPANY_NAME]", params.get('company'))
@@ -339,9 +342,9 @@ def send_email(params: dict):
     SOURCE_HTML = SOURCE_HTML.replace("[AREA4]", params.get('area4'))
     SOURCE_HTML = SOURCE_HTML.replace("[TOTAL4]", get_price(params.get('price4')))
 
-    SOURCE_HTML = SOURCE_HTML.replace("[SUBTOTAL]", params.get('subtotal'))
-    SOURCE_HTML = SOURCE_HTML.replace("[HST]", params.get('hst'))
-    SOURCE_HTML = SOURCE_HTML.replace("[TOTAL]", params.get('total'))
+    SOURCE_HTML = SOURCE_HTML.replace("[SUBTOTAL]", get_price(params.get('subtotal')))
+    SOURCE_HTML = SOURCE_HTML.replace("[HST]", get_price(params.get('hst')))
+    SOURCE_HTML = SOURCE_HTML.replace("[TOTAL]", get_price(params.get('total')))
     
     send_to_customer = params.get('emailreport')
     recipients = []
