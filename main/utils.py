@@ -16,11 +16,6 @@ def send_email(params: dict):
 
     <!-- Bootstrap CSS -->
     <style>
-        .logo img {
-            width: 240px;
-            height: 55px;
-        }
-
         h2,
         h4 {
             font-weight: 400;
@@ -124,16 +119,35 @@ def send_email(params: dict):
             width: 100px;
         }
 
+        .flexrow {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: flex;
+        }
+        .flexrow > div {
+            -webkit-box-flex: 1;
+            -webkit-flex: 1;
+            flex: 1;
+            margin-right: 10%;
+            background-color: yellow;
+            border: 1px dashed black;
+        }
+        .flexrow > div:last-child {
+            margin-right: 0;
+        }
+
     </style>
 </head>
 
 <body class="container">
-    <div class="logo">
-        <img src="https://i.imgur.com/BT6GFNC.jpg" alt="Logo">
+    <div class="logo flexrow">
+        <img src="https://i.imgur.com/bRkpxDk.png" alt="Logo">
+        <!-- <p style="font-size: 14px;">QUOTE</p> -->
     </div>
+    <br>
     <div class="header">
-        <p style="font-size: 16px; margin: 0; padding: 0 0;">PROPERTY SERVICES!</p>
-        <p style="font-size: 16px; margin: 0; padding: 0 0;">CELEBRATING 25 YEARS!</p>
+        <p style="font-size: 14px; margin: 0; padding: 0 0;">PROPERTY SERVICES!</p>
+        <p style="font-size: 14px; margin: 0; padding: 0 0;">CELEBRATING 25 YEARS!</p>
     </div>
 
     <br>
@@ -187,28 +201,28 @@ def send_email(params: dict):
                 <tbody>
                     <tr class="service-row">
                         <td class="quantity-cell first-row">[QTY1]</td>
-                        <td class="first-row">[DESC1]</td>
+                        <td class="first-row" style="text-align: left; padding-left: 1em;">[DESC1]</td>
                         <td class="first-row">[AREA1]</td>
                         <td class="first-row" style="border-right: 1px solid lightgray;">[TOTAL1]</td>
                     </tr>
 
                     <tr class="service-row">
                         <td class="quantity-cell">[QTY2]</td>
-                        <td>[DESC2]</td>
+                        <td style="text-align: left; padding-left: 1em;">[DESC2]</td>
                         <td>[AREA2]</td>
                         <td style="border-right: 1px solid lightgray;">[TOTAL2]</td>
                     </tr>
 
                     <tr class="service-row">
                         <td class="quantity-cell">[QTY3]</td>
-                        <td>[DESC3]</td>
+                        <td style="text-align: left; padding-left: 1em;">[DESC3]</td>
                         <td>[AREA3]</td>
                         <td style="border-right: 1px solid lightgray;">[TOTAL3]</td>
                     </tr>
 
                     <tr class="border-bottom-row service-row">
                         <td class="quantity-cell">[QTY4]</td>
-                        <td>[DESC4]</td>
+                        <td style="text-align: left; padding-left: 1em;">[DESC4]</td>
                         <td>[AREA4]</td>
                         <td style="border-right: 1px solid lightgray;">[TOTAL4]</td>
                     </tr>
@@ -280,6 +294,14 @@ def send_email(params: dict):
     <p>The best compliment that you can give our company is a referral.</p>
     """
 
+    def get_price(price):
+        if price == '0.0' or price == '0' or price == '0.00':
+            return ''
+        elif '.' in price:
+            return price
+        else:
+            return price + '.00'
+
 
     SOURCE_HTML = SOURCE_HTML.replace("[COMPANY_NAME]", params.get('company'))
     SOURCE_HTML = SOURCE_HTML.replace("[NAME]", params.get('name'))
@@ -300,22 +322,22 @@ def send_email(params: dict):
     SOURCE_HTML = SOURCE_HTML.replace("[QTY1]", '')
     SOURCE_HTML = SOURCE_HTML.replace("[DESC1]", "<br>" + params.get('desc1'))
     SOURCE_HTML = SOURCE_HTML.replace("[AREA1]", params.get('area1'))
-    SOURCE_HTML = SOURCE_HTML.replace("[TOTAL1]", str(float(params.get('price1'))))
+    SOURCE_HTML = SOURCE_HTML.replace("[TOTAL1]", get_price(params.get('price1')))
 
     SOURCE_HTML = SOURCE_HTML.replace("[QTY2]", '')
     SOURCE_HTML = SOURCE_HTML.replace("[DESC2]", params.get('desc2'))
     SOURCE_HTML = SOURCE_HTML.replace("[AREA2]", params.get('area2'))
-    SOURCE_HTML = SOURCE_HTML.replace("[TOTAL2]", str(float(params.get('price2'))))
+    SOURCE_HTML = SOURCE_HTML.replace("[TOTAL2]", get_price(params.get('price2')))
 
     SOURCE_HTML = SOURCE_HTML.replace("[QTY3]", '')
     SOURCE_HTML = SOURCE_HTML.replace("[DESC3]", params.get('desc3'))
     SOURCE_HTML = SOURCE_HTML.replace("[AREA3]", params.get('area3'))
-    SOURCE_HTML = SOURCE_HTML.replace("[TOTAL3]", str(float(params.get('price3'))))
+    SOURCE_HTML = SOURCE_HTML.replace("[TOTAL3]", get_price(params.get('price3')))
     
     SOURCE_HTML = SOURCE_HTML.replace("[QTY4]", '')
     SOURCE_HTML = SOURCE_HTML.replace("[DESC4]", params.get('desc4'))
     SOURCE_HTML = SOURCE_HTML.replace("[AREA4]", params.get('area4'))
-    SOURCE_HTML = SOURCE_HTML.replace("[TOTAL4]", str(float(params.get('price4'))))
+    SOURCE_HTML = SOURCE_HTML.replace("[TOTAL4]", get_price(params.get('price4')))
 
     SOURCE_HTML = SOURCE_HTML.replace("[SUBTOTAL]", params.get('subtotal'))
     SOURCE_HTML = SOURCE_HTML.replace("[HST]", params.get('hst'))
