@@ -12,7 +12,7 @@ def send_email(params: dict):
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MasterCleaner Report</title>
+    <title>Master Sealer Report</title>
 
     <!-- Bootstrap CSS -->
     <style>
@@ -142,7 +142,6 @@ def send_email(params: dict):
 <body class="container">
     <div class="logo flexrow">
         <img src="https://i.imgur.com/SL7vZt2.png" alt="Logo">
-        <!-- <p style="font-size: 14px;">QUOTE</p> -->
     </div>
     <br>
 
@@ -218,7 +217,7 @@ def send_email(params: dict):
 
                     <tr class="border-bottom-row service-row">
                         <td class="quantity-cell">[QTY4]</td>
-                        <td style="">[DESC4]</td>
+                        <td style="text-align: left; padding-left: 1em;">[DESC4]</td>
                         <td>[AREA4]</td>
                         <td style="border-right: 1px solid lightgray; font-weight: bold;">[TOTAL4]</td>
                     </tr>
@@ -316,22 +315,42 @@ def send_email(params: dict):
     SOURCE_HTML = SOURCE_HTML.replace("[QUOTATION_DATE]", params.get('quotation_date'))
     
     SOURCE_HTML = SOURCE_HTML.replace("[QTY1]", '')
-    SOURCE_HTML = SOURCE_HTML.replace("[DESC1]", "<br>" + params.get('desc1'))
+    
+    if params.get('desc1') != '':
+        SOURCE_HTML = SOURCE_HTML.replace("[DESC1]", "<br>" + params.get('desc1'))
+    else:
+        SOURCE_HTML = SOURCE_HTML.replace('<td class="first-row" style="width: 800px; text-align: left; padding-left: 1em;">[DESC1]</td>', "<br><td></td>")
+        
     SOURCE_HTML = SOURCE_HTML.replace("[AREA1]", params.get('area1'))
     SOURCE_HTML = SOURCE_HTML.replace("[TOTAL1]", get_price(params.get('price1')))
 
     SOURCE_HTML = SOURCE_HTML.replace("[QTY2]", '')
-    SOURCE_HTML = SOURCE_HTML.replace("[DESC2]", params.get('desc2'))
+
+    if params.get('desc2') != '':
+        SOURCE_HTML = SOURCE_HTML.replace("[DESC2]", params.get('desc2'))
+    else:
+        SOURCE_HTML = SOURCE_HTML.replace('<td style="text-align: left; padding-left: 1em;">[DESC2]</td>', "<td></td>")
+
     SOURCE_HTML = SOURCE_HTML.replace("[AREA2]", params.get('area2'))
     SOURCE_HTML = SOURCE_HTML.replace("[TOTAL2]", get_price(params.get('price2')))
 
     SOURCE_HTML = SOURCE_HTML.replace("[QTY3]", '')
-    SOURCE_HTML = SOURCE_HTML.replace("[DESC3]", params.get('desc3'))
+
+    if params.get('desc3') != '':
+        SOURCE_HTML = SOURCE_HTML.replace("[DESC3]", params.get('desc3'))
+    else:
+        SOURCE_HTML = SOURCE_HTML.replace('<td style="text-align: left; padding-left: 1em;">[DESC3]</td>', "<td></td>")
+
     SOURCE_HTML = SOURCE_HTML.replace("[AREA3]", params.get('area3'))
     SOURCE_HTML = SOURCE_HTML.replace("[TOTAL3]", get_price(params.get('price3')))
     
     SOURCE_HTML = SOURCE_HTML.replace("[QTY4]", '')
-    SOURCE_HTML = SOURCE_HTML.replace("[DESC4]", params.get('desc4'))
+
+    if params.get('desc4') != '':
+        SOURCE_HTML = SOURCE_HTML.replace("[DESC4]", params.get('desc4'))
+    else:
+        SOURCE_HTML = SOURCE_HTML.replace('<td style="text-align: left; padding-left: 1em;">[DESC4]</td>', "<td></td>")
+
     SOURCE_HTML = SOURCE_HTML.replace("[AREA4]", params.get('area4'))
     SOURCE_HTML = SOURCE_HTML.replace("[TOTAL4]", get_price(params.get('price4')))
 
