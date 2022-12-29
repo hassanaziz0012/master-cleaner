@@ -1,6 +1,7 @@
-from django.http import HttpResponse, JsonResponse
-from django.shortcuts import render
+from django.http import HttpResponse, JsonResponse, HttpResponseRedirect
+from django.shortcuts import render, redirect
 from django.views import View
+from django.template.loader import render_to_string
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 from pprint import pprint
@@ -11,8 +12,19 @@ from main.utils import send_email
 @method_decorator(csrf_exempt, name="dispatch")
 class CustomerFormView(View):
     def get(self, request, format=None):
-        del request.session
-        return render(request, "main/customer_form.html")
+        try:
+            access = request.COOKIES['access']
+            if access == 'True':  
+                content = render_to_string('main/customer_form.html')
+                response = HttpResponse(content)
+                response.delete_cookie('access')
+                return response
+            else:
+                return redirect('login')
+
+        except KeyError:
+            return redirect('login')
+
 
     def post(self, request, format=None):
         company = request.POST.get('company')
@@ -83,3 +95,18 @@ class CustomerFormView(View):
 
         return HttpResponse(source_html)
         
+
+class LoginView(View):
+    def get(self, request):
+        return render(request, 'main/login.html')
+
+    def post(self, request):
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        
+        if username == 'mastersealer' and password == 'Estimates1983123':
+            response = HttpResponseRedirect('/')
+            response.set_cookie('access', True)
+            return response
+        else:
+            return redirect('login')

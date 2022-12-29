@@ -15,8 +15,9 @@ Including another URLconf
 """
 from django.urls import path
 
-from main.views import CustomerFormView
+from main.views import CustomerFormView, LoginView
 
 urlpatterns = [
     path('', CustomerFormView.as_view(), name="customer-form-view"),
+    path('login', LoginView.as_view(), name="login"),
 ]
