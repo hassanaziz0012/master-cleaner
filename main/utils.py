@@ -253,8 +253,7 @@ def send_email(params: dict):
 
         <div class="credit">
             <p>Quotation prepared by: <span class="underline">[ESTIMATOR]</span></p>
-            <p>If you would like to accept this quotation or if you have any questions, please call or reply to this email:
-                905-850-8955 - Service@mastersealer.com</p>
+            <p>If you would like to accept this quotation, simply reply to this email for the quickest response.</p>
 
             <div class="thank-you">
                 <h3 class="text-center">THANK YOU FOR THE OPPORTUNITY OF DOING BUSINESS!</h3>
