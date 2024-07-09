@@ -12,7 +12,7 @@ def send_email(params: dict):
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MasterSealer Report</title>
+    <title>Master Sealer Report</title>
 
     <!-- Bootstrap CSS -->
     <style>
@@ -144,14 +144,9 @@ def send_email(params: dict):
 
 <body class="container">
     <div class="logo flexrow">
-        <img src="https://i.imgur.com/bRkpxDk.png" alt="Logo">
-        <!-- <p style="font-size: 14px;">QUOTE</p> -->
+        <img src="https://i.imgur.com/qrS1Olx.png" alt="Logo">
     </div>
     <br>
-    <div class="header">
-        <p style="font-size: 14px; margin: 0; padding: 0 0;">PROPERTY SERVICES!</p>
-        <p style="font-size: 14px; margin: 0; padding: 0 0;">CELEBRATING 26 YEARS!</p>
-    </div>
 
     <br>
     <div class="contact-info" style="font-size: 12px;">
@@ -197,14 +192,14 @@ def send_email(params: dict):
             <table class="table">
                 <thead>
                     <th>QTY</th>
-                    <th>DESCRIPTION OF SERVICES</th>
+                    <th style="width: 800px">DESCRIPTION OF SERVICES</th>
                     <th class="area-header">AREA</th>
                     <th class="total-header">TOTAL</th>
                 </thead>
                 <tbody>
                     <tr class="service-row">
                         <td class="quantity-cell first-row" style="width: 50px;">[QTY1]</td>
-                        <td class="first-row" style="width: 800px;">[DESC1]</td>
+                        <td class="first-row" style="width: 800px; text-align: left; padding-left: 1em;">[DESC1]</td>
                         <td class="first-row" style="width: 100px;">[AREA1]</td>
                         <td class="first-row" style="border-right: 1px solid lightgray; font-weight: bold; width: 100px;">[TOTAL1]</td>
                     </tr>
@@ -265,6 +260,7 @@ def send_email(params: dict):
                 <h3 class="text-center">THANK YOU FOR THE OPPORTUNITY OF DOING BUSINESS!</h3>
             </div>
             <p class="text-center">Email us for the quickest reply</p>
+
         </div>
 
     </div>
