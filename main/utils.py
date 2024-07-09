@@ -258,7 +258,6 @@ def send_email(params: dict):
             <div class="thank-you">
                 <h3 class="text-center">THANK YOU FOR THE OPPORTUNITY OF DOING BUSINESS!</h3>
             </div>
-            <p class="text-center">Email us for the quickest reply</p>
 
         </div>
 
